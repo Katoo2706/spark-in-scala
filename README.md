@@ -4,9 +4,10 @@ Spark 3.5.0 compatible with Scala 2.13.12 and JVM 11.
 
 If error on Main, delete .idea and re import the project. 
 
-If error with import error, choose JV 11 and reload sbt
+If error with import error, choose JV 11 and reload sbt (right side)
 ```
 
+![Spark APIs](https://cms.databricks.com/sites/default/files/inline-images/rdd-img-1.png)
 # DataFrames
 > A DataFrame is a Dataset organized into named columns
 - Schema = list describing the column name and types:**

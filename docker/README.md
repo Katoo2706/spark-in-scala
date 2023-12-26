@@ -82,6 +82,20 @@ http://10.5.0.5:8081/
 
 ![alt text](docs/spark-worker-3.png "Spark worker 3 UI")
 
+# Access Spark SQL
+
+Access to Spark Master container:
+```bash
+docker exec -it <container_id> bash 
+```
+
+Access the Spark SQL
+```bash
+./spark/bin/spark-sql
+```
+
+Wait a couple of seconds to run and start up Spark Session
+
 # Resource Allocation 
 
 This cluster is shipped with three workers and one spark master, each of these has a particular set of resource allocation(basically RAM & cpu cores allocation).
@@ -95,6 +109,7 @@ This cluster is shipped with three workers and one spark master, each of these h
 * The default RAM allocation for spark driver is 128mb
 
 * If you wish to modify this allocations just edit the env/spark-worker.sh file.
+
 
 # Binded Volumes
 

@@ -103,5 +103,36 @@ object DataSources extends App {
   /**
    * Exercise: Read the movies DF, then write it as
    * - tab-separated values file
-   * s*/
+   * - snappy Parquet // default is snappy
+   * - table "scala.movies" in the Postgres DB
+   * */
+
+  val moviesDF = spark.read
+    .json("src/main/resources/data/movies.json")
+
+  // tab-separated values file
+  moviesDF.write
+    .mode("overwrite")
+    .option("header", "true")
+    .option("sep", "\t")
+    .csv(f"src/main/resources/data/movies.csv")
+
+  // parquet
+  moviesDF.write
+    .mode("overwrite")
+    .parquet("src/main/resources/data/movies.parquet")
+
+  // save to DB
+  moviesDF.write
+    .format("jdbc")
+    .mode("overwrite")
+    .option("driver", "org.postgresql.Driver")
+    .option("url", "jdbc:postgresql://118.70.33.114:5434/postgres")
+    .option("user", "airflow")
+    .option("password", "Advesa_etl")
+    .option("dbtable", "scala.movies")
+    .save()
+
+  moviesDF.show()
+
 }
